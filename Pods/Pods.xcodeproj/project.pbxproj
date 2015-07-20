@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A9795A6280FFED0D2AF38BA /* Pods-ShouldIWashMyCar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B2E86CEFA5C522372519C /* Pods-ShouldIWashMyCar-dummy.m */; };
+		65B5534744FA0CA10FD9F13A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A7811FF2591C551EB3FF58 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07A5E84154A25AB91D6BAB48 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		21E97A15F34ED024F8D2BE7C /* Pods-ShouldIWashMyCar-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShouldIWashMyCar-resources.sh"; sourceTree = "<group>"; };
+		2557F2B74E42AF7614E6ACD0 /* Pods-ShouldIWashMyCar-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ShouldIWashMyCar-environment.h"; sourceTree = "<group>"; };
+		25CA86B1AB8239E570204352 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		27840DCA6CEFCB948A755407 /* Pods-ShouldIWashMyCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShouldIWashMyCar.release.xcconfig"; sourceTree = "<group>"; };
+		2F5059A74A166181853A5E93 /* Pods-ShouldIWashMyCar-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ShouldIWashMyCar-acknowledgements.plist"; sourceTree = "<group>"; };
+		37DBE45EC74B894C070159B1 /* Pods-ShouldIWashMyCar-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ShouldIWashMyCar-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3D1B2E86CEFA5C522372519C /* Pods-ShouldIWashMyCar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ShouldIWashMyCar-dummy.m"; sourceTree = "<group>"; };
+		54A7811FF2591C551EB3FF58 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9CEF74F0ECC8A5DD85537601 /* Pods-ShouldIWashMyCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShouldIWashMyCar.debug.xcconfig"; sourceTree = "<group>"; };
+		AEA4444795FD206B7ABFE052 /* libPods-ShouldIWashMyCar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShouldIWashMyCar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF3C470EC629AC65BC1095D7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3BC88147545FBF5C6085B052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65B5534744FA0CA10FD9F13A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		011295F2DFA256E31C0E04B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D69EC88B7977BD333CF6B64 /* GoogleMaps */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2D69EC88B7977BD333CF6B64 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				4E6DB6015C6C8E5B6FCC6931 /* Frameworks */,
+				84E1F45F769690917A4B411E /* Resources */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		307D8DE27586D2E6375BFE7C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				54A7811FF2591C551EB3FF58 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		31C6F27BCDF83AFA382AD26C /* Pods-ShouldIWashMyCar */ = {
+			isa = PBXGroup;
+			children = (
+				37DBE45EC74B894C070159B1 /* Pods-ShouldIWashMyCar-acknowledgements.markdown */,
+				2F5059A74A166181853A5E93 /* Pods-ShouldIWashMyCar-acknowledgements.plist */,
+				3D1B2E86CEFA5C522372519C /* Pods-ShouldIWashMyCar-dummy.m */,
+				2557F2B74E42AF7614E6ACD0 /* Pods-ShouldIWashMyCar-environment.h */,
+				21E97A15F34ED024F8D2BE7C /* Pods-ShouldIWashMyCar-resources.sh */,
+				9CEF74F0ECC8A5DD85537601 /* Pods-ShouldIWashMyCar.debug.xcconfig */,
+				27840DCA6CEFCB948A755407 /* Pods-ShouldIWashMyCar.release.xcconfig */,
+			);
+			name = "Pods-ShouldIWashMyCar";
+			path = "Target Support Files/Pods-ShouldIWashMyCar";
+			sourceTree = "<group>";
+		};
+		3B77A3AC38D0D667E42A0060 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				31C6F27BCDF83AFA382AD26C /* Pods-ShouldIWashMyCar */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		4E6DB6015C6C8E5B6FCC6931 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07A5E84154A25AB91D6BAB48 /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84E1F45F769690917A4B411E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EF3C470EC629AC65BC1095D7 /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DAEE78BCE86C54BDF9229401 = {
+			isa = PBXGroup;
+			children = (
+				25CA86B1AB8239E570204352 /* Podfile */,
+				EFF8F46F6AFA2EB5B361A49A /* Frameworks */,
+				011295F2DFA256E31C0E04B9 /* Pods */,
+				E0F285863CB0A061EA87D3D0 /* Products */,
+				3B77A3AC38D0D667E42A0060 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		E0F285863CB0A061EA87D3D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AEA4444795FD206B7ABFE052 /* libPods-ShouldIWashMyCar.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFF8F46F6AFA2EB5B361A49A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				307D8DE27586D2E6375BFE7C /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		293621ED7F565D325AE430A9 /* Pods-ShouldIWashMyCar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E407A043610553C7BC6094DD /* Build configuration list for PBXNativeTarget "Pods-ShouldIWashMyCar" */;
+			buildPhases = (
+				C565C858A38F575558CAD5D8 /* Sources */,
+				3BC88147545FBF5C6085B052 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ShouldIWashMyCar";
+			productName = "Pods-ShouldIWashMyCar";
+			productReference = AEA4444795FD206B7ABFE052 /* libPods-ShouldIWashMyCar.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		733A150CC9B4A8D05779824D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = B26A4458611C808D2D8D4134 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DAEE78BCE86C54BDF9229401;
+			productRefGroup = E0F285863CB0A061EA87D3D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				293621ED7F565D325AE430A9 /* Pods-ShouldIWashMyCar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C565C858A38F575558CAD5D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A9795A6280FFED0D2AF38BA /* Pods-ShouldIWashMyCar-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4C123A3AB79FB4E10B7292BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		73BA88158609C0A8D1B4B2F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CEF74F0ECC8A5DD85537601 /* Pods-ShouldIWashMyCar.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9B99D96EB59E1B1EC188A481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27840DCA6CEFCB948A755407 /* Pods-ShouldIWashMyCar.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9F29CCE17EFA0B093C9C51EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B26A4458611C808D2D8D4134 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F29CCE17EFA0B093C9C51EB /* Debug */,
+				4C123A3AB79FB4E10B7292BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E407A043610553C7BC6094DD /* Build configuration list for PBXNativeTarget "Pods-ShouldIWashMyCar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73BA88158609C0A8D1B4B2F5 /* Debug */,
+				9B99D96EB59E1B1EC188A481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 733A150CC9B4A8D05779824D /* Project object */;
+}
