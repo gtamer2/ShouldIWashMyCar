@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import CoreLocation
+
 class Car {
+    var name = ""
+    var miles = 0
+    var commuteDistance = CLLocationDistance()
     let oilChangeConst: Double = 7500
     
 }

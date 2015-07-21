@@ -29,8 +29,11 @@ class CarListTableViewController: UITableViewController {
         case "Save":
             let source = segue.sourceViewController as! NewCarViewController
             if count(source.nameTextField.text) <= 0 || source.nameTextField.text == nil{
-                
+                source.displayAlert("Fill in Car Name text field")
             }
+        case "Cancel":
+            let source = segue.sourceViewController as! NewCarViewController
+            source.hasLeftController = true
         default:
             println("Default bro")
         }

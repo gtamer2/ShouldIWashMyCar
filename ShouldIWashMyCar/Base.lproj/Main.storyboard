@@ -316,6 +316,7 @@
                         <outlet property="milesTextField" destination="xi7-hT-sNe" id="wnb-oI-uLc"/>
                         <outlet property="nameTextField" destination="jzc-jN-Ep8" id="sJN-4Z-4gM"/>
                         <outlet property="noCommuteButton" destination="BrA-7G-Qjd" id="EIR-Wd-lll"/>
+                        <outlet property="saveButton" destination="1bk-eQ-aL2" id="ePe-G5-2vz"/>
                         <outlet property="startTextField" destination="dgO-MG-QUl" id="Llb-FB-gZo"/>
                         <outlet property="yesCommuteButton" destination="vQP-jB-5RB" id="TBD-IO-cWE"/>
                     </connections>

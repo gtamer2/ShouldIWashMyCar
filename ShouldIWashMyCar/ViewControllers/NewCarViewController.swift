@@ -22,6 +22,7 @@ class NewCarViewController: UIViewController {
     @IBOutlet weak var yesCommuteButton: UIButton!
     @IBOutlet weak var noCommuteButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     var datePickerDataSource: [String] = []
     var locationManager: CLLocationManager? = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
@@ -34,6 +35,8 @@ class NewCarViewController: UIViewController {
     var path = GMSMutablePath()
     var isStartMarker: Bool = true
     var doesCommute: Bool = false
+    var hasLeftController: Bool = false
+
     
     @IBAction func pressYesCommute(sender: AnyObject) {
         doesCommute = true
@@ -46,9 +49,11 @@ class NewCarViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         commuteView.hidden = true
+        checkSaveButton()
         addBorderToObject(yesCommuteButton, radius: 10)
         addBorderToObject(noCommuteButton, radius: 10)
         addBorderToObject(startTextField, radius: 5)
@@ -80,6 +85,43 @@ class NewCarViewController: UIViewController {
         button.layer.borderColor = (UIColor.orangeColor()).CGColor
         button.layer.cornerRadius = radius
     }
+    
+    func displayAlert(string: String){
+        var alert = UIAlertController(title: "Empty Field", message: string, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func checkSaveButton(){
+        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+        dispatch_async(backgroundQueue, {
+            var hasName: Bool = false
+            var hasMiles = false
+            var hasStartMarker = false
+            var hasDestinationMarker = false
+            while !hasName || !hasMiles || !hasStartMarker || !hasDestinationMarker {
+                if self.hasLeftController {
+                    break
+                }
+                hasName = !(count(self.nameTextField.text) <= 0 || self.nameTextField.text == nil)
+                hasMiles = !(count(self.milesTextField.text) <= 0 || self.milesTextField.text == nil)
+                hasStartMarker = !(self.startMarker.title == nil)
+                hasDestinationMarker = !(self.destinationMarker.title == nil)
+                if self.saveButton.enabled {
+                    self.saveButton.enabled = false
+                }
+                NSThread.sleepForTimeInterval(0.75)
+            }
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if !self.hasLeftController {
+                    self.saveButton.enabled = true
+                }
+            })
+        })
+    }
+
+    
     func fillPickerDataSource(){
         for index in 1...7 {
             datePickerDataSource.append(String(index))
