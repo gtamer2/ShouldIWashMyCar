@@ -9,12 +9,13 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import MapKit
 
 class NewCarViewController: UIViewController {
 
     @IBOutlet weak var milesTextField: UITextField!
     @IBOutlet weak var mapView: GMSMapView!
-
+    @IBOutlet weak var sliderView: UISlider!
     //@IBOutlet weak var datePickerView: UIPickerView!
     @IBOutlet weak var destinationTextField: AutoCompleteTextField!
     @IBOutlet weak var startTextField: AutoCompleteTextField!
@@ -23,7 +24,7 @@ class NewCarViewController: UIViewController {
     @IBOutlet weak var noCommuteButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    var datePickerDataSource: [String] = []
+    var commuteDistance: Double = 0
     var locationManager: CLLocationManager? = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
     var data: [GMSAutocompletePrediction]?
@@ -49,6 +50,8 @@ class NewCarViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func didChangeSlider(sender: AnyObject) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +63,6 @@ class NewCarViewController: UIViewController {
         addBorderToObject(destinationTextField, radius: 5)
         self.setUpAutocompleteTextView(startTextField)
         self.setUpAutocompleteTextView(destinationTextField)
-        fillPickerDataSource()
         //datePickerView.dataSource = self
         //datePickerView.delegate = self
         setUpLocationManager()
@@ -84,12 +86,6 @@ class NewCarViewController: UIViewController {
         button.layer.borderWidth = 0.5
         button.layer.borderColor = (UIColor.orangeColor()).CGColor
         button.layer.cornerRadius = radius
-    }
-    
-    func displayAlert(string: String){
-        var alert = UIAlertController(title: "Empty Field", message: string, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func checkSaveButton(){
@@ -116,17 +112,13 @@ class NewCarViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if !self.hasLeftController {
                     self.saveButton.enabled = true
+                    self.getRouteDistance()
                 }
             })
         })
     }
 
     
-    func fillPickerDataSource(){
-        for index in 1...7 {
-            datePickerDataSource.append(String(index))
-        }
-    }
     /*
     // MARK: - Navigation
 
@@ -271,7 +263,6 @@ extension NewCarViewController{
                 }
             }
             self!.view.endEditing(true)
-
         }
         field.autoCompleteStrings = []
     }
@@ -317,3 +308,26 @@ extension NewCarViewController{
         self.performMapSearch(textField.text, textField: textField)
     }
 }
+
+//MARK: Route distance
+extension NewCarViewController {
+    func getRouteDistance() {
+        var directions = MKDirections()
+        var route = MKRoute()
+        var directionsRequest = MKDirectionsRequest()
+        directionsRequest.setSource(MKMapItem(placemark: MKPlacemark(coordinate: startMarker.position, addressDictionary: nil)))
+        directionsRequest.setDestination(MKMapItem(placemark: MKPlacemark(coordinate: destinationMarker.position, addressDictionary: nil)))
+        directionsRequest.transportType = MKDirectionsTransportType.Automobile
+        directionsRequest.requestsAlternateRoutes = true
+        directions = MKDirections(request: directionsRequest)
+        directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse?, error:NSError?) -> Void in
+            if error == nil {
+                route = response?.routes[0] as! MKRoute
+                self.commuteDistance = (Double(route.distance))
+            } else {
+                println(error)
+            }
+        }
+    }
+}
+

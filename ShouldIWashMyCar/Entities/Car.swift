@@ -7,12 +7,18 @@
 //
 
 import Foundation
-import CoreLocation
+import Realm
+import RealmSwift
 
-class Car {
-    var name = ""
-    var miles = 0
-    var commuteDistance = CLLocationDistance()
+class Car: Object{
+    dynamic var name: String = ""
+    dynamic var miles: Int = 0
+    dynamic var modificationDate = NSDate()
+    dynamic var weeklyCommuteDistance: Double = 0
     let oilChangeConst: Double = 7500
-    
+    func constructCar(name: String, miles: Int, weeklyCommuteDistance: Double) {
+        self.name = name
+        self.miles = miles
+        self.weeklyCommuteDistance = weeklyCommuteDistance
+    }
 }

@@ -4,7 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-ShouldIWashMyCar-Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ShouldIWashMyCar-RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ShouldIWashMyCar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ShouldIWashMyCarTests-Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ShouldIWashMyCarTests-RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ShouldIWashMyCarTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -12,7 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>293621ED7F565D325AE430A9</key>
+		<key>0EBCC66B6A3A39722E8810F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>639CDDBFA20D9832BFC21AED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6676F04C1CC31AC132BEE902</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7DD489A33088FFB7FBD7B003</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92DD6F515EA4709B539EEB47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D66F9539C5E9B6E023F4F250</key>
 		<dict>
 			<key>primary</key>
 			<true/>

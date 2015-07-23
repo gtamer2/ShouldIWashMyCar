@@ -7,32 +7,66 @@
 //
 
 import UIKit
+import Realm
+import RealmSwift
+import CoreLocation
 
 class CarListTableViewController: UITableViewController {
+    
+    var selectedCar: Car?
+    
     @IBOutlet weak var tableViewObj: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewObj.dataSource = self
-        tableViewObj.estimatedRowHeight = 234
-        //tableViewObj.rowHeight = UITableViewAutomaticDimension
+        tableViewObj.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    var cars: Results<Car>!{
+        didSet{
+            tableViewObj?.reloadData()
+        }
+    }
     // MARK: - Table view data source
-
+    override func viewWillAppear(animated: Bool){
+        let realm = Realm()
+        cars = realm.objects(Car).sorted("name", ascending: false)
+        super.viewWillAppear(animated)
+    }
+    
+    
     @IBAction func unwindToSegue(segue: UIStoryboardSegue) {
+        let source = segue.sourceViewController as! NewCarViewController
         switch segue.identifier! {
         case "Save":
-            let source = segue.sourceViewController as! NewCarViewController
-            if count(source.nameTextField.text) <= 0 || source.nameTextField.text == nil{
-                source.displayAlert("Fill in Car Name text field")
+            let realm = Realm()
+            var miles: Int = 0
+            if let int = source.milesTextField.text.toInt() {
+                miles = int
+            }
+            let car = Car()
+            car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: source.commuteDistance)
+            realm.write(){
+                realm.add(car)
+            }
+        case "NoCommute":
+            source.hasLeftController = true
+            let realm = Realm()
+            let car = Car()
+            var miles: Int = 0
+            if let int = source.milesTextField.text.toInt() {
+                miles = int
+            }
+            car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: 0)
+            realm.write(){
+                realm.add(car)
             }
         case "Cancel":
-            let source = segue.sourceViewController as! NewCarViewController
             source.hasLeftController = true
         default:
             println("Default bro")
@@ -99,15 +133,53 @@ extension CarListTableViewController: UITableViewDataSource {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CarCell", forIndexPath: indexPath) as! CarListTableViewCell //1
-        
         let row = indexPath.row
-        cell.carNameLabel?.text = "I'm a Car!"
-        
+        let car = cars[row] as Car
+        cell.car = car
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return Int(cars?.count ?? 0)
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        if Int(cars!.count) == 0 || cars?.count == nil {
+            var messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            messageLabel.text = "No Cars"
+            messageLabel.textColor = UIColor.grayColor()
+            messageLabel.font = UIFont(name: "Helvetica Neue", size: 27)
+            messageLabel.numberOfLines = 1
+            messageLabel.textAlignment = NSTextAlignment.Center
+            messageLabel.sizeToFit()
+            self.tableViewObj.backgroundView = messageLabel
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            return 0
+        }
+        else {
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            return 1
+        }
+        
+    }
+    
+}
+
+extension CarListTableViewController: UITableViewDelegate {
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedCar = cars[indexPath.row]
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            let car = cars[indexPath.row] as Object
+            let realm = Realm()
+            realm.write() {
+                realm.delete(car)
+            }
+            cars = realm.objects(Car).sorted("name", ascending: false)
+        }
+    }
+
 }

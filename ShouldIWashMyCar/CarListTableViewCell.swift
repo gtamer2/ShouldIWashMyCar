@@ -10,6 +10,16 @@ import UIKit
 
 class CarListTableViewCell: UITableViewCell {
     @IBOutlet var carNameLabel: UILabel!
+    @IBOutlet weak var carMilesLabel: UILabel!
+    @IBOutlet weak var carDistanceLabel: UILabel!
+
+    var car: Car? {
+        didSet {
+            self.carNameLabel.text = car?.name
+            self.carMilesLabel.text = ("Approximate Miles: \(car!.miles)")
+            self.carDistanceLabel.text = ("Commute Distance: \(round(car!.weeklyCommuteDistance * 0.000621371)) Miles")
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

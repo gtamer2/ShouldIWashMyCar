@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lDz-9F-qhG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Vehicles-->
@@ -18,15 +19,46 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qx6-YL-UOe" id="ruy-H8-NA2">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTv-b8-uzc">
-                                            <rect key="frame" x="40" y="23" width="527" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTv-b8-uzc">
+                                            <rect key="frame" x="24" y="23" width="251" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="251" id="Ubp-46-erI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-RC-X9K">
+                                            <rect key="frame" x="24" y="65" width="251" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="251" id="JJg-cM-hyg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Commute Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7v-rh-afs">
+                                            <rect key="frame" x="24" y="104" width="245" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="245" id="7m0-ue-Ku7"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2yI-RC-X9K" firstAttribute="leading" secondItem="ruy-H8-NA2" secondAttribute="leadingMargin" constant="16" id="69T-mt-p7H"/>
+                                        <constraint firstItem="J7v-rh-afs" firstAttribute="leading" secondItem="ruy-H8-NA2" secondAttribute="leadingMargin" constant="16" id="Dbs-fE-8JE"/>
+                                        <constraint firstItem="2yI-RC-X9K" firstAttribute="top" secondItem="HTv-b8-uzc" secondAttribute="bottom" constant="18.5" id="Sps-kj-9Jx"/>
+                                        <constraint firstItem="J7v-rh-afs" firstAttribute="top" secondItem="2yI-RC-X9K" secondAttribute="bottom" constant="13" id="Xvf-T7-z8h"/>
+                                        <constraint firstItem="HTv-b8-uzc" firstAttribute="leading" secondItem="ruy-H8-NA2" secondAttribute="leadingMargin" constant="16" id="ajQ-GT-kg6"/>
+                                        <constraint firstItem="HTv-b8-uzc" firstAttribute="top" secondItem="ruy-H8-NA2" secondAttribute="topMargin" constant="15" id="e1m-3p-0lP"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="carDistanceLabel" destination="J7v-rh-afs" id="y3G-X1-duD"/>
+                                    <outlet property="carMilesLabel" destination="2yI-RC-X9K" id="qRz-bo-4PJ"/>
                                     <outlet property="carNameLabel" destination="HTv-b8-uzc" id="GX1-6W-TVn"/>
                                 </connections>
                             </tableViewCell>
@@ -112,29 +144,47 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="QUb-ht-dqE">
+                                                        <rect key="frame" x="467" y="85" width="118" height="31"/>
+                                                        <connections>
+                                                            <action selector="didChangeSlider:" destination="24B-Tu-wb0" eventType="valueChanged" id="08R-v9-Dfa"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3du-OU-Ko5">
+                                                        <rect key="frame" x="505" y="42" width="42" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PoE-25-6oh" customClass="GMSMapView">
-                                                        <rect key="frame" x="0.0" y="115" width="600" height="300"/>
+                                                        <rect key="frame" x="0.0" y="150" width="600" height="290"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="300" id="0jC-eA-zPJ"/>
+                                                            <constraint firstAttribute="height" constant="290" id="0jC-eA-zPJ"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="QUb-ht-dqE" firstAttribute="top" secondItem="3du-OU-Ko5" secondAttribute="bottom" constant="22" id="3Bz-wG-IZo"/>
                                                     <constraint firstAttribute="trailing" secondItem="PoE-25-6oh" secondAttribute="trailing" id="7Ug-su-6nt"/>
+                                                    <constraint firstItem="3du-OU-Ko5" firstAttribute="leading" secondItem="dgO-MG-QUl" secondAttribute="trailing" constant="52" id="JPx-Op-7wa"/>
                                                     <constraint firstAttribute="bottom" secondItem="PoE-25-6oh" secondAttribute="bottom" id="Kwt-KR-l7V"/>
                                                     <constraint firstAttribute="trailing" secondItem="dgO-MG-QUl" secondAttribute="trailing" constant="147" id="LhP-VR-lLW"/>
                                                     <constraint firstAttribute="centerX" secondItem="gHH-tO-G9s" secondAttribute="centerX" id="M9U-h3-zy4"/>
                                                     <constraint firstItem="JgN-mF-Fdo" firstAttribute="leading" secondItem="7Aw-Xl-b2x" secondAttribute="leading" constant="8" id="OIG-fG-1CM"/>
                                                     <constraint firstItem="dgO-MG-QUl" firstAttribute="leading" secondItem="7Aw-Xl-b2x" secondAttribute="leading" constant="8" id="Qe2-ve-eGZ"/>
                                                     <constraint firstAttribute="height" constant="430" id="ROF-ro-rL3"/>
+                                                    <constraint firstItem="QUb-ht-dqE" firstAttribute="top" secondItem="7Aw-Xl-b2x" secondAttribute="top" constant="85" id="Te8-HA-mcW"/>
                                                     <constraint firstItem="JgN-mF-Fdo" firstAttribute="top" secondItem="dgO-MG-QUl" secondAttribute="bottom" constant="13" id="VHp-31-LAR"/>
                                                     <constraint firstAttribute="trailing" secondItem="JgN-mF-Fdo" secondAttribute="trailing" constant="147" id="aaH-zP-zDK"/>
+                                                    <constraint firstItem="QUb-ht-dqE" firstAttribute="leading" secondItem="JgN-mF-Fdo" secondAttribute="trailing" constant="16.5" id="bNL-te-5ta"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QUb-ht-dqE" secondAttribute="trailing" constant="16.5" id="bfb-cM-juC"/>
                                                     <constraint firstItem="PoE-25-6oh" firstAttribute="leading" secondItem="7Aw-Xl-b2x" secondAttribute="leading" id="fQ7-Hg-Z1i"/>
                                                     <constraint firstItem="dgO-MG-QUl" firstAttribute="top" secondItem="7Aw-Xl-b2x" secondAttribute="top" constant="42" id="pue-xz-jB3"/>
                                                     <constraint firstItem="PoE-25-6oh" firstAttribute="top" secondItem="JgN-mF-Fdo" secondAttribute="bottom" id="ro7-mR-GoZ"/>
                                                     <constraint firstItem="gHH-tO-G9s" firstAttribute="top" secondItem="7Aw-Xl-b2x" secondAttribute="top" constant="12" id="uHS-5c-vjK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3du-OU-Ko5" secondAttribute="trailing" constant="53" id="zUJ-gS-KeW"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -317,6 +367,7 @@
                         <outlet property="nameTextField" destination="jzc-jN-Ep8" id="sJN-4Z-4gM"/>
                         <outlet property="noCommuteButton" destination="BrA-7G-Qjd" id="EIR-Wd-lll"/>
                         <outlet property="saveButton" destination="1bk-eQ-aL2" id="ePe-G5-2vz"/>
+                        <outlet property="sliderView" destination="QUb-ht-dqE" id="jSC-Ze-Tuz"/>
                         <outlet property="startTextField" destination="dgO-MG-QUl" id="Llb-FB-gZo"/>
                         <outlet property="yesCommuteButton" destination="vQP-jB-5RB" id="TBD-IO-cWE"/>
                     </connections>
