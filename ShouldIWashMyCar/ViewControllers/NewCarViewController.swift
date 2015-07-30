@@ -14,9 +14,11 @@ import MapKit
 class NewCarViewController: UIViewController {
 
     @IBOutlet weak var milesTextField: UITextField!
-    @IBOutlet weak var mapView: GMSMapView!
+    //@IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var sliderView: UISlider!
-    //@IBOutlet weak var datePickerView: UIPickerView!
+    
+    @IBOutlet weak var detailsTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var destinationTextField: AutoCompleteTextField!
     @IBOutlet weak var startTextField: AutoCompleteTextField!
     @IBOutlet weak var commuteView: UIView!
@@ -24,6 +26,8 @@ class NewCarViewController: UIViewController {
     @IBOutlet weak var noCommuteButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    
     var commuteDistance: Double = 0
     var locationManager: CLLocationManager? = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
@@ -37,12 +41,17 @@ class NewCarViewController: UIViewController {
     var isStartMarker: Bool = true
     var doesCommute: Bool = false
     var hasLeftController: Bool = false
+    var hasFinishedFindingDistance: Bool = false
+    var commuteTimesPerWeek: Int = 4
 
     
     @IBAction func pressYesCommute(sender: AnyObject) {
         doesCommute = true
+        self.sliderLabel.textAlignment = NSTextAlignment.Center
+        self.sliderLabel.text = "\(commuteTimesPerWeek)"
         if(commuteView.hidden){
             commuteView.hidden = false
+            self.animateDetailsView(true)
             if let locationManager = locationManager {
                 locationManager.startUpdatingLocation()
             }
@@ -50,7 +59,12 @@ class NewCarViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func didChangeSlider(sender: AnyObject) {
+    @IBAction func didChangeSlider(sender: UISlider) {
+        var currentValue = Int(sender.value * 6) + 1
+        var sliderText: NSMutableAttributedString = NSMutableAttributedString(string: String(stringInterpolationSegment: currentValue))
+        var attributedString = NSAttributedString(string: " days a week")
+        sliderText.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeColor(), range: NSMakeRange(0,1))
+        sliderLabel.attributedText = sliderText
     }
     
     override func viewDidLoad() {
@@ -63,8 +77,6 @@ class NewCarViewController: UIViewController {
         addBorderToObject(destinationTextField, radius: 5)
         self.setUpAutocompleteTextView(startTextField)
         self.setUpAutocompleteTextView(destinationTextField)
-        //datePickerView.dataSource = self
-        //datePickerView.delegate = self
         setUpLocationManager()
         createLocationManager()
         checkLocationAuthorizationStatus()
@@ -86,6 +98,18 @@ class NewCarViewController: UIViewController {
         button.layer.borderWidth = 0.5
         button.layer.borderColor = (UIColor.orangeColor()).CGColor
         button.layer.cornerRadius = radius
+    }
+    
+    func animateDetailsView(show: Bool) {
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            if show {
+                self.detailsTopConstraint.constant = 35
+            }
+            else {
+                self.detailsTopConstraint.constant = -185
+            }
+            self.view.layoutIfNeeded()
+        })
     }
     
     func checkSaveButton(){
@@ -155,7 +179,7 @@ extension NewCarViewController: CLLocationManagerDelegate{
         let southWest = CLLocationCoordinate2DMake(currentLocation!.latitude - 0.1, currentLocation!.longitude - 1)
         bounds = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
         //self.mapView.animateToCameraPosition(GMSCameraPosition.cameraWithTarget(locValue, zoom: 10.0))
-        self.mapView.camera = self.mapView.cameraForBounds(self.bounds, insets:UIEdgeInsetsZero)
+        //self.mapView.camera = self.mapView.cameraForBounds(self.bounds, insets:UIEdgeInsetsZero)
         locationManager?.stopUpdatingLocation()
     }
     func createLocationManager () {
@@ -165,7 +189,7 @@ extension NewCarViewController: CLLocationManagerDelegate{
     }
     func checkLocationAuthorizationStatus() {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-            mapView.myLocationEnabled = true
+            //mapView.myLocationEnabled = true
         } else {
             locationManager?.requestWhenInUseAuthorization()
         }
@@ -176,11 +200,11 @@ extension NewCarViewController: CLLocationManagerDelegate{
 //MARK: MapView
 extension NewCarViewController: GMSMapViewDelegate{
     func setUpLocationManager(){
-        self.mapView.delegate = self
-        self.mapView.settings.myLocationButton = true
+        //self.mapView.delegate = self
+        //self.mapView.settings.myLocationButton = true
     }
     func refreshMapView(){
-        self.mapView.animateToCameraPosition(mapView.cameraForBounds(self.bounds.includingPath(path), insets: UIEdgeInsetsMake(30,30,30,30)))
+        //self.mapView.animateToCameraPosition(mapView.cameraForBounds(self.bounds.includingPath(path), insets: UIEdgeInsetsMake(30,30,30,30)))
     }
 }
 
@@ -194,6 +218,19 @@ extension NewCarViewController{
     }
     func didTapView(){
         self.view.endEditing(true)
+    }
+    func stopCheckingExternalTaps() {
+        if let recognizers = self.view.gestureRecognizers {
+            for recognizer in recognizers {
+                self.view.removeGestureRecognizer(recognizer as! UIGestureRecognizer)
+            }
+        }
+    }
+    @IBAction func startTextFieldSelected(sender: AnyObject) {
+        self.stopCheckingExternalTaps()
+    }
+    @IBAction func destinationTextFieldSelected(sender: AnyObject) {
+        self.stopCheckingExternalTaps()
     }
 }
 
@@ -225,7 +262,7 @@ extension NewCarViewController{
     }
     
     func setUpMarker(marker: GMSMarker){
-        marker.map = mapView!
+        //marker.map = mapView!
         if self.isStartMarker {
             marker.title = "Start"
         }
@@ -244,6 +281,7 @@ extension NewCarViewController{
         field.maximumAutoCompleteCount = 5
         field.onSelect = {[weak self] text, indexpath in
             field.text = text
+            self!.stopCheckingExternalTaps()
             if field == self!.startTextField {
                 self!.isStartMarker = true
                 if let place = self!.placesDict[text] {
@@ -263,6 +301,7 @@ extension NewCarViewController{
                 }
             }
             self!.view.endEditing(true)
+            self!.checkExternalTaps()
         }
         field.autoCompleteStrings = []
     }
@@ -327,6 +366,7 @@ extension NewCarViewController {
             } else {
                 println(error)
             }
+            self.hasFinishedFindingDistance = true
         }
     }
 }

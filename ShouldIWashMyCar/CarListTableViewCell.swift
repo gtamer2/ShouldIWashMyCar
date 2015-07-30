@@ -17,7 +17,9 @@ class CarListTableViewCell: UITableViewCell {
         didSet {
             self.carNameLabel.text = car?.name
             self.carMilesLabel.text = ("Approximate Miles: \(car!.miles)")
-            self.carDistanceLabel.text = ("Commute Distance: \(round(car!.weeklyCommuteDistance * 0.000621371)) Miles")
+            var weeklyMeters = Double(car!.timesPerWeek) * car!.weeklyCommuteDistance
+            println(weeklyMeters)
+            self.carDistanceLabel.text = ("Commute Distance: \(round(weeklyMeters * 0.000621371)) Miles per Week")
         }
     }
 

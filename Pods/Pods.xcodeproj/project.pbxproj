@@ -1424,6 +1424,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
+				TargetAttributes = {
+					639CDDBFA20D9832BFC21AED = {
+						DevelopmentTeam = FJZN4A9UP6;
+					};
+				};
 			};
 			buildConfigurationList = CED9A9CD2FD9DE035E7F0E53 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1929,6 +1934,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9B127B0FB0535A33A30464 /* Pods-ShouldIWashMyCar-Realm-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1944,6 +1950,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-ShouldIWashMyCar-Realm/Pods-ShouldIWashMyCar-Realm.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Realm;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1956,6 +1963,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C9B127B0FB0535A33A30464 /* Pods-ShouldIWashMyCar-Realm-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1971,6 +1979,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-ShouldIWashMyCar-Realm/Pods-ShouldIWashMyCar-Realm.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Realm;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

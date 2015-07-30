@@ -50,7 +50,7 @@ class CarListTableViewController: UITableViewController {
                 miles = int
             }
             let car = Car()
-            car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: source.commuteDistance)
+            car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: source.commuteDistance, timesPerWeek: source.commuteTimesPerWeek)
             realm.write(){
                 realm.add(car)
             }
@@ -62,7 +62,7 @@ class CarListTableViewController: UITableViewController {
             if let int = source.milesTextField.text.toInt() {
                 miles = int
             }
-            car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: 0)
+            car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: 0, timesPerWeek: 0)
             realm.write(){
                 realm.add(car)
             }
@@ -73,60 +73,18 @@ class CarListTableViewController: UITableViewController {
         }
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showExistingCar") {
+            if let carTabController = segue.destinationViewController as? CarTabBarViewController {
+                if let carInfoController = carTabController.viewControllers![0] as? CarInfoViewController, tripListController = carTabController.viewControllers![1] as? TripListViewController{
+                    carInfoController.car = self.selectedCar!
+                    tripListController.car = self.selectedCar!
+                    
+                }
+            }
+            
+        }
     }
-    */
 
 }
 extension CarListTableViewController: UITableViewDataSource {
@@ -157,10 +115,11 @@ extension CarListTableViewController: UITableViewDataSource {
             return 0
         }
         else {
+            self.tableViewObj.backgroundView = nil
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
             return 1
         }
-        
+        //hi
     }
     
 }
@@ -169,6 +128,7 @@ extension CarListTableViewController: UITableViewDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedCar = cars[indexPath.row]
+        self.performSegueWithIdentifier("showExistingCar", sender: self)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

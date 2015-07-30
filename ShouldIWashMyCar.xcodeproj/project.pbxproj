@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28057D1E1B6955B300F8D169 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28057D1D1B6955B300F8D169 /* Trip.swift */; };
+		28057D201B69805500F8D169 /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28057D1F1B69805500F8D169 /* TripListViewController.swift */; };
+		28057D221B69917800F8D169 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28057D211B69917800F8D169 /* TripTableViewCell.swift */; };
 		282EF91A1B5D83B8003312E3 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282EF9191B5D83B8003312E3 /* Car.swift */; };
 		286A162A1B557C3800C76445 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286A16291B557C3800C76445 /* AutoCompleteTextField.swift */; };
 		28A634FF1B4C30AC005DDCD3 /* CarListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A634FE1B4C30AC005DDCD3 /* CarListTableViewController.swift */; };
@@ -18,6 +21,8 @@
 		28A66A7E1B4AFD6600BAD902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28A66A7D1B4AFD6600BAD902 /* Images.xcassets */; };
 		28A66A811B4AFD6600BAD902 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A66A7F1B4AFD6600BAD902 /* LaunchScreen.xib */; };
 		28A66A8D1B4AFD6600BAD902 /* ShouldIWashMyCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A66A8C1B4AFD6600BAD902 /* ShouldIWashMyCarTests.swift */; };
+		28C304861B62F362005644BB /* CarTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C304851B62F362005644BB /* CarTabBarViewController.swift */; };
+		28C3048A1B63024D005644BB /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C304891B63024D005644BB /* CarInfoViewController.swift */; };
 		AF6AAF6FF1025429D2EE79B9 /* Pods_ShouldIWashMyCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCF4856451598B5FAAE92C7 /* Pods_ShouldIWashMyCar.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FCB1CB971CE61A63958D433B /* Pods_ShouldIWashMyCarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC36241CD798F43BDF2BF222 /* Pods_ShouldIWashMyCarTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -33,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28057D1D1B6955B300F8D169 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trip.swift; path = Entities/Trip.swift; sourceTree = "<group>"; };
+		28057D1F1B69805500F8D169 /* TripListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripListViewController.swift; path = ViewControllers/TripListViewController.swift; sourceTree = "<group>"; };
+		28057D211B69917800F8D169 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripTableViewCell.swift; path = Entities/TripTableViewCell.swift; sourceTree = "<group>"; };
 		282EF9191B5D83B8003312E3 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Car.swift; path = Entities/Car.swift; sourceTree = "<group>"; };
 		286A16291B557C3800C76445 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		28A634FE1B4C30AC005DDCD3 /* CarListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarListTableViewController.swift; path = ViewControllers/CarListTableViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +58,8 @@
 		28A66A861B4AFD6600BAD902 /* ShouldIWashMyCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShouldIWashMyCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A66A8B1B4AFD6600BAD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28A66A8C1B4AFD6600BAD902 /* ShouldIWashMyCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShouldIWashMyCarTests.swift; sourceTree = "<group>"; };
+		28C304851B62F362005644BB /* CarTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarTabBarViewController.swift; path = ViewControllers/CarTabBarViewController.swift; sourceTree = "<group>"; };
+		28C304891B63024D005644BB /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfoViewController.swift; path = ViewControllers/CarInfoViewController.swift; sourceTree = "<group>"; };
 		5744F96ED610EE22CA43DE5F /* Pods-ShouldIWashMyCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldIWashMyCar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShouldIWashMyCar/Pods-ShouldIWashMyCar.debug.xcconfig"; sourceTree = "<group>"; };
 		57734B617941C33939046DFF /* Pods-ShouldIWashMyCarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldIWashMyCarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShouldIWashMyCarTests/Pods-ShouldIWashMyCarTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B0AFB97D0D6A47DA3A3761C /* Pods-ShouldIWashMyCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldIWashMyCar.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShouldIWashMyCar/Pods-ShouldIWashMyCar.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +94,8 @@
 			children = (
 				28A635001B4C314D005DDCD3 /* CarListTableViewCell.swift */,
 				282EF9191B5D83B8003312E3 /* Car.swift */,
+				28057D1D1B6955B300F8D169 /* Trip.swift */,
+				28057D211B69917800F8D169 /* TripTableViewCell.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -99,8 +111,11 @@
 		28A634FD1B4C3093005DDCD3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				28057D1F1B69805500F8D169 /* TripListViewController.swift */,
 				28A635021B4C73D3005DDCD3 /* NewCarViewController.swift */,
 				28A634FE1B4C30AC005DDCD3 /* CarListTableViewController.swift */,
+				28C304851B62F362005644BB /* CarTabBarViewController.swift */,
+				28C304891B63024D005644BB /* CarInfoViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -243,7 +258,11 @@
 				TargetAttributes = {
 					28A66A701B4AFD6600BAD902 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = FJZN4A9UP6;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 0;
 							};
@@ -392,12 +411,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28057D221B69917800F8D169 /* TripTableViewCell.swift in Sources */,
 				28A635031B4C73D3005DDCD3 /* NewCarViewController.swift in Sources */,
 				28A634FF1B4C30AC005DDCD3 /* CarListTableViewController.swift in Sources */,
 				282EF91A1B5D83B8003312E3 /* Car.swift in Sources */,
+				28057D201B69805500F8D169 /* TripListViewController.swift in Sources */,
+				28057D1E1B6955B300F8D169 /* Trip.swift in Sources */,
 				286A162A1B557C3800C76445 /* AutoCompleteTextField.swift in Sources */,
+				28C304861B62F362005644BB /* CarTabBarViewController.swift in Sources */,
 				28A66A771B4AFD6600BAD902 /* AppDelegate.swift in Sources */,
 				28A635011B4C314D005DDCD3 /* CarListTableViewCell.swift in Sources */,
+				28C3048A1B63024D005644BB /* CarInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +551,8 @@
 			baseConfigurationReference = 5744F96ED610EE22CA43DE5F /* Pods-ShouldIWashMyCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/amit/Downloads/realm-swift-0.93.2/ios",
@@ -534,6 +560,7 @@
 				INFOPLIST_FILE = ShouldIWashMyCar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -542,6 +569,8 @@
 			baseConfigurationReference = 7B0AFB97D0D6A47DA3A3761C /* Pods-ShouldIWashMyCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/amit/Downloads/realm-swift-0.93.2/ios",
@@ -549,6 +578,7 @@
 				INFOPLIST_FILE = ShouldIWashMyCar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
