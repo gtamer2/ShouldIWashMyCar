@@ -17,6 +17,7 @@ class NewCarViewController: UIViewController {
     //@IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var sliderView: UISlider!
     
+    @IBOutlet weak var commuteNameTextField: UITextField!
     @IBOutlet weak var detailsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var destinationTextField: AutoCompleteTextField!
@@ -61,6 +62,7 @@ class NewCarViewController: UIViewController {
     
     @IBAction func didChangeSlider(sender: UISlider) {
         var currentValue = Int(sender.value * 6) + 1
+        self.commuteTimesPerWeek = currentValue
         var sliderText: NSMutableAttributedString = NSMutableAttributedString(string: String(stringInterpolationSegment: currentValue))
         var attributedString = NSAttributedString(string: " days a week")
         sliderText.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeColor(), range: NSMakeRange(0,1))
@@ -81,9 +83,27 @@ class NewCarViewController: UIViewController {
         createLocationManager()
         checkLocationAuthorizationStatus()
         checkExternalTaps()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
         //self.mapView.showsUserLocation = true
         
         // Do any additional setup after loading the view.
+    }
+
+    // Do any additional setup after loading the view.
+    func keyboardWillShow(sender: NSNotification) {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            if(self.view.frame.origin.y >= -150 && self.detailsTopConstraint.constant == 35) {
+                self.view.frame.origin.y -= 150
+            }
+        })
+    }
+    func keyboardWillHide(sender: NSNotification) {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            if (self.view.frame.origin.y <= -150 && self.detailsTopConstraint.constant == 35) {
+                self.view.frame.origin.y += 150
+            }
+        })
     }
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
@@ -120,7 +140,8 @@ class NewCarViewController: UIViewController {
             var hasMiles = false
             var hasStartMarker = false
             var hasDestinationMarker = false
-            while !hasName || !hasMiles || !hasStartMarker || !hasDestinationMarker {
+            var hasCommuteName = false
+            while !hasName || !hasMiles || !hasStartMarker || !hasDestinationMarker || !hasCommuteName {
                 if self.hasLeftController {
                     break
                 }
@@ -128,6 +149,7 @@ class NewCarViewController: UIViewController {
                 hasMiles = !(count(self.milesTextField.text) <= 0 || self.milesTextField.text == nil)
                 hasStartMarker = !(self.startMarker.title == nil)
                 hasDestinationMarker = !(self.destinationMarker.title == nil)
+                hasCommuteName = !(self.commuteNameTextField.text == "" || self.commuteNameTextField.text == nil)
                 if self.saveButton.enabled {
                     self.saveButton.enabled = false
                 }

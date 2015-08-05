@@ -16,10 +16,11 @@ class CarListTableViewCell: UITableViewCell {
     var car: Car? {
         didSet {
             self.carNameLabel.text = car?.name
-            self.carMilesLabel.text = ("Approximate Miles: \(car!.miles)")
-            var weeklyMeters = Double(car!.timesPerWeek) * car!.weeklyCommuteDistance
-            println(weeklyMeters)
-            self.carDistanceLabel.text = ("Commute Distance: \(round(weeklyMeters * 0.000621371)) Miles per Week")
+            let newMiles: Double = CarInfoViewController.roundToDecimal(CarInfoViewController.metersSinceCreation(self.car!), numberOfDecimals: 1)
+            let existingMiles: Double = Double(car!.miles)
+            self.carMilesLabel.text = ("Approximate Miles: \(Double(newMiles + existingMiles))")
+            var weeklyMeters = self.car?.totalMetersPerWeek()
+            self.carDistanceLabel.text = ("Commute Distance: \(round(weeklyMeters! * 0.000621371)) Miles per Week")
         }
     }
 

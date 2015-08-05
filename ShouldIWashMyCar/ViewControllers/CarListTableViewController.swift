@@ -51,6 +51,7 @@ class CarListTableViewController: UITableViewController {
             }
             let car = Car()
             car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: source.commuteDistance, timesPerWeek: source.commuteTimesPerWeek)
+            car.commutes.first!.name = source.commuteNameTextField.text
             realm.write(){
                 realm.add(car)
             }
@@ -62,7 +63,7 @@ class CarListTableViewController: UITableViewController {
             if let int = source.milesTextField.text.toInt() {
                 miles = int
             }
-            car.constructCar(source.nameTextField.text, miles: miles, weeklyCommuteDistance: 0, timesPerWeek: 0)
+            car.constructCar(source.commuteNameTextField.text, miles: miles, weeklyCommuteDistance: 0, timesPerWeek: 0)
             realm.write(){
                 realm.add(car)
             }

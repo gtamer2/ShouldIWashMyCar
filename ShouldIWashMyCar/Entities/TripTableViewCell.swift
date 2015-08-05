@@ -18,6 +18,11 @@ class TripTableViewCell: UITableViewCell {
             displayTripInfo()
         }
     }
+    var commute: Commute? {
+        didSet {
+            displayCommuteInfo()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,13 +33,20 @@ class TripTableViewCell: UITableViewCell {
     
     func displayTripInfo() {
         if let trip = self.trip, distanceLabel = tripDistanceLabel, dateLabel = self.tripEndDateLabel, timeLabel = self.tripTimeLabel{
-            let distanceInMiles = trip.distanceInMeters * CarInfoViewController.milesToMeters
+            let distanceInMiles = trip.distanceInMeters * CarInfoViewController.metersToMiles
             let distanceDisplayQuantity = CarInfoViewController.roundToDecimal(distanceInMiles, numberOfDecimals: 1)
             distanceLabel.text = "\(distanceDisplayQuantity) Miles"
             dateLabel.text = CarInfoViewController.dateFormatter.stringFromDate(trip.endDate)
             let timeInHours: Double = Double(trip.timeInSeconds/3600)
             let timeDisplayQuantity = CarInfoViewController.roundToDecimal(timeInHours, numberOfDecimals: 1.0)
             timeLabel.text = ("\(timeDisplayQuantity) Hours")
+        }
+    }
+    func displayCommuteInfo() {
+        if let commute = self.commute {
+            self.tripDistanceLabel.text = commute.name
+            self.tripEndDateLabel.text = ("\(round(commute.distance)) Miles One Way")
+            self.tripTimeLabel.text = ("\(commute.timesPerWeek) Time(s) Per Week")
         }
     }
 }

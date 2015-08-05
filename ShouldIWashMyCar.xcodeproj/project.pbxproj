@@ -23,6 +23,7 @@
 		28A66A8D1B4AFD6600BAD902 /* ShouldIWashMyCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A66A8C1B4AFD6600BAD902 /* ShouldIWashMyCarTests.swift */; };
 		28C304861B62F362005644BB /* CarTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C304851B62F362005644BB /* CarTabBarViewController.swift */; };
 		28C3048A1B63024D005644BB /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C304891B63024D005644BB /* CarInfoViewController.swift */; };
+		28ED12431B6BE80A004C6A52 /* Commute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED12421B6BE80A004C6A52 /* Commute.swift */; };
 		AF6AAF6FF1025429D2EE79B9 /* Pods_ShouldIWashMyCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCF4856451598B5FAAE92C7 /* Pods_ShouldIWashMyCar.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FCB1CB971CE61A63958D433B /* Pods_ShouldIWashMyCarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC36241CD798F43BDF2BF222 /* Pods_ShouldIWashMyCarTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		28A66A8C1B4AFD6600BAD902 /* ShouldIWashMyCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShouldIWashMyCarTests.swift; sourceTree = "<group>"; };
 		28C304851B62F362005644BB /* CarTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarTabBarViewController.swift; path = ViewControllers/CarTabBarViewController.swift; sourceTree = "<group>"; };
 		28C304891B63024D005644BB /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfoViewController.swift; path = ViewControllers/CarInfoViewController.swift; sourceTree = "<group>"; };
+		28ED12421B6BE80A004C6A52 /* Commute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commute.swift; path = Entities/Commute.swift; sourceTree = "<group>"; };
 		5744F96ED610EE22CA43DE5F /* Pods-ShouldIWashMyCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldIWashMyCar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShouldIWashMyCar/Pods-ShouldIWashMyCar.debug.xcconfig"; sourceTree = "<group>"; };
 		57734B617941C33939046DFF /* Pods-ShouldIWashMyCarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldIWashMyCarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShouldIWashMyCarTests/Pods-ShouldIWashMyCarTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B0AFB97D0D6A47DA3A3761C /* Pods-ShouldIWashMyCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShouldIWashMyCar.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShouldIWashMyCar/Pods-ShouldIWashMyCar.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				28A635001B4C314D005DDCD3 /* CarListTableViewCell.swift */,
 				282EF9191B5D83B8003312E3 /* Car.swift */,
 				28057D1D1B6955B300F8D169 /* Trip.swift */,
+				28ED12421B6BE80A004C6A52 /* Commute.swift */,
 				28057D211B69917800F8D169 /* TripTableViewCell.swift */,
 			);
 			name = Entities;
@@ -146,6 +149,7 @@
 		28A66A731B4AFD6600BAD902 /* ShouldIWashMyCar */ = {
 			isa = PBXGroup;
 			children = (
+				28ED12441B6C8264004C6A52 /* Views */,
 				286A16281B557C3800C76445 /* AutoCompleteTextField */,
 				2812FD761B546D45009EB1F4 /* Entities */,
 				28A634FD1B4C3093005DDCD3 /* ViewControllers */,
@@ -181,6 +185,13 @@
 				28A66A8B1B4AFD6600BAD902 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28ED12441B6C8264004C6A52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		5B8F71F58D3980443EA55520 /* Pods */ = {
@@ -413,6 +424,7 @@
 			files = (
 				28057D221B69917800F8D169 /* TripTableViewCell.swift in Sources */,
 				28A635031B4C73D3005DDCD3 /* NewCarViewController.swift in Sources */,
+				28ED12431B6BE80A004C6A52 /* Commute.swift in Sources */,
 				28A634FF1B4C30AC005DDCD3 /* CarListTableViewController.swift in Sources */,
 				282EF91A1B5D83B8003312E3 /* Car.swift in Sources */,
 				28057D201B69805500F8D169 /* TripListViewController.swift in Sources */,
