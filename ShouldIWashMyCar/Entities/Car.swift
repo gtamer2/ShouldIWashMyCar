@@ -19,8 +19,11 @@ class Car: Object{
     dynamic var timesPerWeek: Int = 0
     dynamic var trips = List<Trip>()
     dynamic var commutes = List<Commute>()
+    dynamic var maintenances = List<Maintenance>()
     dynamic var commuteModifiers: Double = 0.0
     let oilChangeConst: Double = 3000
+    let transmissionConst: Double = 50000
+    let brakeConst: Double = 20000
     func constructCar(name: String, miles: Int, weeklyCommuteDistance: Double, timesPerWeek: Int) {
         self.name = name
         self.miles = miles
@@ -36,6 +39,7 @@ class Car: Object{
             let product: Double = Double(commute.timesPerWeek) * commute.distance
             result += product
         }
+        result *= 2 //Remember, both ways
         return result
     }
     func addMiles(miles: Double) {

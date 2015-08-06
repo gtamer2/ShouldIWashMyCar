@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Car-100.png"
+      "filename" : "Maintenance-32.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "CarAsset.png"
+      "filename" : "Maintenance-50.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Maintenance-64.png"
     }
   ],
   "info" : {

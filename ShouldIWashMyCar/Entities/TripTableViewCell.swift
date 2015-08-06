@@ -45,7 +45,9 @@ class TripTableViewCell: UITableViewCell {
     func displayCommuteInfo() {
         if let commute = self.commute {
             self.tripDistanceLabel.text = commute.name
-            self.tripEndDateLabel.text = ("\(round(commute.distance)) Miles One Way")
+            var distanceInMiles = commute.distance * CarInfoViewController.metersToMiles
+            println(distanceInMiles)
+            self.tripEndDateLabel.text = ("\(round(distanceInMiles)) Miles One Way")
             self.tripTimeLabel.text = ("\(commute.timesPerWeek) Time(s) Per Week")
         }
     }

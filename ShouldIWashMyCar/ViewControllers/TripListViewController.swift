@@ -39,7 +39,12 @@ class TripListViewController: UIViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,17 +70,17 @@ extension TripListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripTableViewCell
         let row = indexPath.row
         if sectionTitle == "Weekly Commutes" {
-            cell.commute = self.commutes[row]
+            cell.commute = self.car.commutes[row]
         }
         else {
-            let trip = self.trips[row]
+            let trip = self.car.trips[row]
             cell.trip = trip
         }
         return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == 0){return self.commutes.count}
-        else {return self.trips.count}
+        if(section == 0){return self.car.commutes.count}
+        else {return self.car.trips.count}
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
         if Int(self.trips.count + self.commutes.count) == 0 {

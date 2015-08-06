@@ -70,7 +70,7 @@ class CarListTableViewController: UITableViewController {
         case "Cancel":
             source.hasLeftController = true
         default:
-            println("Default bro")
+            println("Default")
         }
     }
 
@@ -81,6 +81,9 @@ class CarListTableViewController: UITableViewController {
                     carInfoController.car = self.selectedCar!
                     tripListController.car = self.selectedCar!
                     
+                }
+                if let maintenanceController = carTabController.viewControllers![2] as? MaintenanceListViewController {
+                    maintenanceController.carlist = self
                 }
             }
             

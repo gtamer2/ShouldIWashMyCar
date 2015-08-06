@@ -20,7 +20,7 @@ class CarListTableViewCell: UITableViewCell {
             let existingMiles: Double = Double(car!.miles)
             self.carMilesLabel.text = ("Approximate Miles: \(Double(newMiles + existingMiles))")
             var weeklyMeters = self.car?.totalMetersPerWeek()
-            self.carDistanceLabel.text = ("Commute Distance: \(round(weeklyMeters! * 0.000621371)) Miles per Week")
+            self.carDistanceLabel.text = ("Commute Distance: \(round(weeklyMeters! * CarInfoViewController.metersToMiles)) Miles per Week")
         }
     }
 

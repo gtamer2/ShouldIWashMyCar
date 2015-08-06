@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Car-100.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "CarAsset.png"
+      "filename" : "Maintenance-512.png"
     },
     {
       "idiom" : "universal",

@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyBUBG3-dG27O2FqAz0Wgh_tjpBMLwXFQo0")
         return true

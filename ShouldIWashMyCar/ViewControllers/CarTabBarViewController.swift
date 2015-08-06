@@ -8,14 +8,12 @@
 
 import UIKit
 
-class CarTabBarViewController: UITabBarController {
-
+class CarTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationController!.navigationBar.tintColor = UIColor.orangeColor()
-
-        // Do any additional setup after loading the view.
+        self.delegate = self
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationItem.title = "Car Info"
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +21,21 @@ class CarTabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        if viewController is CarInfoViewController {
+            self.navigationItem.title = "Car Info"
+        }
+        else if viewController is TripListViewController {
+            self.navigationItem.title = "Commutes/Trips"
+        }
+        else if viewController is MaintenanceListViewController {
+            self.navigationItem.title = "Maintenance"
+        }
+    }
     /*
     // MARK: - Navigation
 

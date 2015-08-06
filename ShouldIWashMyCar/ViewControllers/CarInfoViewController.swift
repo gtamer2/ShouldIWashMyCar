@@ -17,15 +17,25 @@ import MapKit
 class CarInfoViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var oilProgressView: UIProgressView!
+    @IBOutlet weak var transmissionProgressView: UIProgressView!
+    
+    @IBOutlet weak var brakeProgressView: UIProgressView!
+    
     @IBOutlet weak var carNameLabel: UILabel!
     @IBOutlet weak var calculateCommuteHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var enterDistanceHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var calculateAddCommuteButton: UIButton!
     @IBOutlet weak var enterAddCommuteButton: UIButton!
     @IBOutlet weak var infoDetailsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var drivingButtonLabel: UIButton!
     @IBOutlet weak var trackButton: UIButton!
     @IBOutlet weak var oilDateLabel: UILabel!
+    @IBOutlet weak var transmissionDateLabel: UILabel!
+    
+    @IBOutlet weak var brakeDateLabel: UILabel!
     @IBOutlet weak var calculateCommuteSliderLabel: UILabel!
     @IBOutlet weak var enterCommuteSliderLabel: UILabel!
     @IBOutlet weak var calculateCommuteStartTextField: AutoCompleteTextField!
@@ -33,6 +43,11 @@ class CarInfoViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var commuteNameTextField: UITextField!
     @IBOutlet weak var enterDistanceTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var infoMilesLabel: UILabel!
+    @IBOutlet weak var infoWeeklyMilesLabel: UILabel!
+    @IBOutlet weak var infoDateCreatedLabel: UILabel!
+    
     static var metersToMiles = 0.000621371
     static var milesToMeters = (1/CarInfoViewController.metersToMiles)
     let minimumValidDriveDistance: Double = 1000
@@ -144,15 +159,17 @@ class CarInfoViewController: UIViewController, CLLocationManagerDelegate{
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             if(self.view.frame.origin.y > -150) {
                 self.view.frame.origin.y -= 150
+                self.contentViewHeightConstraint.constant += 100
             }
         })
     }
     func keyboardWillHide(sender: NSNotification) {
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.view.frame.origin.y += 150
+            self.contentViewHeightConstraint.constant -= 100
         })
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.loadCarInfo()
@@ -199,11 +216,21 @@ class CarInfoViewController: UIViewController, CLLocationManagerDelegate{
         return metersFromCommute + metersFromTrips + car.commuteModifiers
     }
     func loadCarInfo() {
-        if let label = self.carNameLabel, let oilDateLabel = self.oilDateLabel {
+        if let label = self.carNameLabel, let infoMilesLabel = self.infoMilesLabel, let oilDateLabel = self.oilDateLabel , let transmissionDateLabel = self.transmissionDateLabel, let brakeDateLabel = self.brakeDateLabel, let infoDateLabel = self.infoDateCreatedLabel{
             label.text = self.car.name
             self.oilDateLabel.text = "Change oil by \(CarInfoViewController.dateFormatter.stringFromDate(self.getMaintenanceDate(self.car.oilChangeConst)))"
+            self.transmissionDateLabel.text = "Check transmission by \(CarInfoViewController.dateFormatter.stringFromDate(self.getMaintenanceDate(self.car.transmissionConst)))"
+            self.brakeDateLabel.text = "Check brakes by \(CarInfoViewController.dateFormatter.stringFromDate(self.getMaintenanceDate(self.car.brakeConst)))"
+            let newMiles: Double = CarInfoViewController.roundToDecimal(CarInfoViewController.metersSinceCreation(self.car), numberOfDecimals: 1)
+            let existingMiles: Double = Double(car.miles)
+            infoMilesLabel.text = ("Approximate Miles: \(Double(newMiles + existingMiles))")
+            var weeklyMeters = self.car.totalMetersPerWeek()
+            self.infoWeeklyMilesLabel.text = ("Commute Distance: \(round(weeklyMeters * CarInfoViewController.metersToMiles)) Miles per Week")
+            infoDateLabel.text = ("Added on \(CarInfoViewController.dateFormatter.stringFromDate(self.car.modificationDate))")
         }
         self.setUpProgressBar(self.oilProgressView, constInMiles: self.car.oilChangeConst)
+        self.setUpProgressBar(self.transmissionProgressView, constInMiles: self.car.transmissionConst)
+        self.setUpProgressBar(self.brakeProgressView, constInMiles: self.car.brakeConst)
     }
     func setUpProgressBar(progressBar: UIProgressView!, constInMiles: Double) {
         if let progressBar = progressBar {
@@ -357,7 +384,7 @@ extension CarInfoViewController {
             }
             if let place = place {
                 self.placeIDLookupResult = place.coordinate
-            } else {
+            } else {8
                 println("No place details for \(placeID)")
             }
         })
@@ -418,7 +445,7 @@ extension CarInfoViewController {
                 NSThread.sleepForTimeInterval(0.1)
             }
             let commute = Commute()
-            commute.constructCommute(self.placeDistanceLookupResult * CarInfoViewController.milesToMeters, times: self.calculateSliderValue, name: self.commuteNameTextField.text)
+            commute.constructCommute(self.placeDistanceLookupResult , times: self.calculateSliderValue, name: self.commuteNameTextField.text)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 let realm = Realm()
                 realm.write(){
@@ -464,9 +491,9 @@ extension CarInfoViewController {
         var commute = Commute()
         var distance: Double = 0.0
         if let distan: Int = self.enterDistanceTextField.text.toInt() {
-            distance = Double(distan)
+            distance = Double(distan) * CarInfoViewController.milesToMeters
         }
-        commute.constructCommute(distance * CarInfoViewController.milesToMeters, times: self.enterSliderValue, name: self.commuteNameTextField.text)
+        commute.constructCommute(distance, times: self.enterSliderValue, name: self.commuteNameTextField.text)
         let realm = Realm()
         realm.write() {
             self.car.commutes.append(commute)

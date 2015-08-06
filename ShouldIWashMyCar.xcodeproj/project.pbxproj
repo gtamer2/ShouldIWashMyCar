@@ -11,6 +11,9 @@
 		28057D201B69805500F8D169 /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28057D1F1B69805500F8D169 /* TripListViewController.swift */; };
 		28057D221B69917800F8D169 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28057D211B69917800F8D169 /* TripTableViewCell.swift */; };
 		282EF91A1B5D83B8003312E3 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282EF9191B5D83B8003312E3 /* Car.swift */; };
+		282FB2F71B73BAD600F030B0 /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FB2F61B73BAD600F030B0 /* Maintenance.swift */; };
+		282FB2F91B73D37300F030B0 /* MaintenanceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FB2F81B73D37300F030B0 /* MaintenanceListViewController.swift */; };
+		282FB2FB1B74153D00F030B0 /* AddMaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FB2FA1B74153D00F030B0 /* AddMaintenanceViewController.swift */; };
 		286A162A1B557C3800C76445 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286A16291B557C3800C76445 /* AutoCompleteTextField.swift */; };
 		28A634FF1B4C30AC005DDCD3 /* CarListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A634FE1B4C30AC005DDCD3 /* CarListTableViewController.swift */; };
 		28A635011B4C314D005DDCD3 /* CarListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A635001B4C314D005DDCD3 /* CarListTableViewCell.swift */; };
@@ -43,6 +46,9 @@
 		28057D1F1B69805500F8D169 /* TripListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripListViewController.swift; path = ViewControllers/TripListViewController.swift; sourceTree = "<group>"; };
 		28057D211B69917800F8D169 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripTableViewCell.swift; path = Entities/TripTableViewCell.swift; sourceTree = "<group>"; };
 		282EF9191B5D83B8003312E3 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Car.swift; path = Entities/Car.swift; sourceTree = "<group>"; };
+		282FB2F61B73BAD600F030B0 /* Maintenance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Maintenance.swift; path = Entities/Maintenance.swift; sourceTree = "<group>"; };
+		282FB2F81B73D37300F030B0 /* MaintenanceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaintenanceListViewController.swift; path = ViewControllers/MaintenanceListViewController.swift; sourceTree = "<group>"; };
+		282FB2FA1B74153D00F030B0 /* AddMaintenanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddMaintenanceViewController.swift; path = ViewControllers/AddMaintenanceViewController.swift; sourceTree = "<group>"; };
 		286A16291B557C3800C76445 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		28A634FE1B4C30AC005DDCD3 /* CarListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarListTableViewController.swift; path = ViewControllers/CarListTableViewController.swift; sourceTree = "<group>"; };
 		28A635001B4C314D005DDCD3 /* CarListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarListTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 				28057D1D1B6955B300F8D169 /* Trip.swift */,
 				28ED12421B6BE80A004C6A52 /* Commute.swift */,
 				28057D211B69917800F8D169 /* TripTableViewCell.swift */,
+				282FB2F61B73BAD600F030B0 /* Maintenance.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -119,6 +126,8 @@
 				28A634FE1B4C30AC005DDCD3 /* CarListTableViewController.swift */,
 				28C304851B62F362005644BB /* CarTabBarViewController.swift */,
 				28C304891B63024D005644BB /* CarInfoViewController.swift */,
+				282FB2F81B73D37300F030B0 /* MaintenanceListViewController.swift */,
+				282FB2FA1B74153D00F030B0 /* AddMaintenanceViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -422,8 +431,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282FB2F91B73D37300F030B0 /* MaintenanceListViewController.swift in Sources */,
 				28057D221B69917800F8D169 /* TripTableViewCell.swift in Sources */,
 				28A635031B4C73D3005DDCD3 /* NewCarViewController.swift in Sources */,
+				282FB2FB1B74153D00F030B0 /* AddMaintenanceViewController.swift in Sources */,
 				28ED12431B6BE80A004C6A52 /* Commute.swift in Sources */,
 				28A634FF1B4C30AC005DDCD3 /* CarListTableViewController.swift in Sources */,
 				282EF91A1B5D83B8003312E3 /* Car.swift in Sources */,
@@ -432,6 +443,7 @@
 				286A162A1B557C3800C76445 /* AutoCompleteTextField.swift in Sources */,
 				28C304861B62F362005644BB /* CarTabBarViewController.swift in Sources */,
 				28A66A771B4AFD6600BAD902 /* AppDelegate.swift in Sources */,
+				282FB2F71B73BAD600F030B0 /* Maintenance.swift in Sources */,
 				28A635011B4C314D005DDCD3 /* CarListTableViewCell.swift in Sources */,
 				28C3048A1B63024D005644BB /* CarInfoViewController.swift in Sources */,
 			);
